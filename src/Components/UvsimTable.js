@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -38,30 +38,32 @@ const UvsimTable = (props) => {
 
     const classes = useStyles();
     return (
+        <Fragment>
+            <h1 style={{ textAlign: 'center' }}>Addresses</h1>
+            <TableContainer className={classes.table} component={Paper}>
+                <Table aria-label="simple table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell align="center">Row</TableCell>
+                            <TableCell align="center">Operation</TableCell>
+                            <TableCell align="center">Address</TableCell>
 
-        <TableContainer className={classes.table} component={Paper}>
-            <Table aria-label="simple table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell align="center">Row</TableCell>
-                        <TableCell align="center">Operation</TableCell>
-                        <TableCell align="center">Address</TableCell>
-
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {props.memory.map((row, index) => (
-                        <TableRow key={row.name}>
-                            <TableCell align="center" component="th" scope="row">
-                                {index}
-                            </TableCell>
-                            <TableCell align="center">{row.operation}</TableCell>
-                            <TableCell align="center">{row.memoryAddress}</TableCell>
                         </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+                    </TableHead>
+                    <TableBody>
+                        {props.memory.map((row, index) => (
+                            <TableRow key={row.name}>
+                                <TableCell align="center" component="th" scope="row">
+                                    {index}
+                                </TableCell>
+                                <TableCell align="center">{row.operation}</TableCell>
+                                <TableCell align="center">{row.memoryAddress}</TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </Fragment>
     )
 }
 
